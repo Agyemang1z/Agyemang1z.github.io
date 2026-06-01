@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Academic profile and CV website of Edmund Fosu Agyemang, PhD student in Biostatistics at Tulane University." />
+  <title>Edmund Fosu Agyemang | Academic CV and Research Profile</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --paper: #fffdf8;
+      --ink: #202428;
+      --muted: #667085;
+      --accent: #7a1f1f;
+      --accent-2: #0f4c5c;
+      --accent-dark: #441111;
+      --gold: #b6862c;
+      --line: #ded2c2;
+      --soft: #efe6d8;
+      --soft-blue: #e8f2f4;
+      --shadow: 0 18px 42px rgba(31, 36, 40, 0.10);
+      --radius: 18px;
+      --max: 1220px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #111315;
+      --paper: #1c2024;
+      --ink: #f4f1ea;
+      --muted: #b8c0c8;
+      --accent: #d87b7b;
+      --accent-2: #7bd3e1;
+      --accent-dark: #f0b4b4;
+      --gold: #e6bd63;
+      --line: #343a40;
+      --soft: #272d33;
+      --soft-blue: #223038;
+      --shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    p { margin-bottom: 0.95rem; }
+    ul, ol { padding-left: 1.25rem; margin: 0.65rem 0 1rem; }
+    li { margin-bottom: 0.45rem; }
+    code { font-family: "Courier New", monospace; font-size: 0.9em; }
+
+    .progress {
+      position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent-2));
+      z-index: 2000;
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(68, 17, 17, 0.96); color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(10px);
+    }
+
+    [data-theme="dark"] .topbar { background: rgba(17, 19, 21, 0.94); }
+
+    .nav-wrap {
+      max-width: var(--max); margin: auto; padding: 0.75rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+
+    .brand {
+      color: #fff; font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap;
+    }
+
+    .nav { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 0.45rem; font-family: Arial, Helvetica, sans-serif; font-size: 0.73rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav a { color: #fff; opacity: 0.88; padding: 0.25rem 0.33rem; border-bottom: 2px solid transparent; }
+    .nav a:hover, .nav a.active { opacity: 1; text-decoration: none; border-bottom-color: var(--gold); }
+
+    .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .icon-btn, .menu-btn { border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.08); color: #fff; border-radius: 999px; padding: 0.4rem 0.65rem; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-size: 0.84rem; }
+    .menu-btn { display: none; }
+
+    .hero {
+      position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(122, 31, 31, 0.16), transparent 35%),
+        radial-gradient(circle at 85% 8%, rgba(15, 76, 92, 0.14), transparent 34%),
+        linear-gradient(135deg, var(--paper), var(--bg));
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2; max-width: var(--max); margin: auto;
+      padding: 4.6rem 1.25rem 3.25rem;
+      display: grid; grid-template-columns: 1.22fr 0.78fr; gap: 2.2rem; align-items: center;
+    }
+
+    .label { color: var(--muted); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.5rem; font-family: Arial, Helvetica, sans-serif; }
+    h1 { color: var(--accent-dark); font-size: clamp(2.25rem, 5.1vw, 4.65rem); line-height: 1.03; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+    .role { color: var(--accent-2); font-size: clamp(1.04rem, 2vw, 1.35rem); font-weight: 700; margin-bottom: 1.1rem; }
+    .lead { font-size: 1.06rem; max-width: 850px; }
+
+    .keywords { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.2rem; }
+    .keywords span { border: 1px solid var(--line); background: var(--soft); color: var(--ink); padding: 0.36rem 0.75rem; border-radius: 999px; font-size: 0.92rem; }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.35rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--accent-dark); background: var(--accent-dark); color: #fff; padding: 0.62rem 0.98rem; border-radius: 999px; font-size: 0.94rem; font-family: Arial, Helvetica, sans-serif; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; }
+    .button.secondary { background: transparent; color: var(--accent-dark); }
+    .button:hover { text-decoration: none; transform: translateY(-2px); box-shadow: var(--shadow); opacity: 0.94; }
+
+    .profile-card { background: rgba(255, 253, 248, 0.84); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+    [data-theme="dark"] .profile-card { background: rgba(28, 32, 36, 0.88); }
+    .portrait { min-height: 260px; border-radius: calc(var(--radius) - 6px); border: 1px dashed var(--line); background: linear-gradient(135deg, rgba(122, 31, 31, 0.11), rgba(15, 76, 92, 0.12)), var(--soft); display: grid; place-items: center; text-align: center; padding: 1.4rem; color: var(--muted); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius) - 6px); }
+    .profile-facts { margin-top: 1rem; display: grid; gap: 0.65rem; }
+    .fact { display: grid; grid-template-columns: 32px 1fr; gap: 0.7rem; align-items: start; padding: 0.65rem; background: var(--soft); border-radius: 14px; border: 1px solid var(--line); }
+    .fact b { display: block; color: var(--accent-dark); line-height: 1.25; }
+    .fact small { color: var(--muted); }
+
+    .stats { max-width: var(--max); margin: -1.35rem auto 1.6rem; padding: 0 1.25rem; position: relative; z-index: 5; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+    .stat { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.05rem; box-shadow: var(--shadow); }
+    .stat strong { display: block; font-size: 1.52rem; color: var(--accent-dark); line-height: 1.1; }
+    .stat span { color: var(--muted); font-family: Arial, Helvetica, sans-serif; font-size: 0.84rem; }
+
+    main { max-width: var(--max); margin: auto; padding: 0 1.25rem 4rem; display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.9fr); gap: 1.6rem; }
+    section, aside .box { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.45rem; margin-bottom: 1.35rem; box-shadow: var(--shadow); scroll-margin-top: 90px; }
+    h2 { color: var(--accent-dark); font-size: 1.34rem; margin-bottom: 1rem; padding-bottom: 0.55rem; border-bottom: 2px solid var(--soft); text-transform: uppercase; letter-spacing: 0.06em; }
+    h3 { color: var(--accent-dark); font-size: 1.06rem; margin: 1rem 0 0.45rem; }
+    .section-intro { color: var(--muted); font-size: 0.98rem; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { border: 1px solid var(--line); background: linear-gradient(180deg, var(--paper), var(--soft)); border-radius: 16px; padding: 1rem; min-height: 100%; }
+    .card h3 { margin-top: 0; }
+
+    .timeline { position: relative; margin-top: 1rem; }
+    .timeline::before { content: ""; position: absolute; left: 0.58rem; top: 0.2rem; bottom: 0.2rem; width: 2px; background: var(--line); }
+    .timeline-item { position: relative; padding-left: 2rem; padding-bottom: 1rem; }
+    .timeline-item::before { content: ""; position: absolute; left: 0.18rem; top: 0.35rem; width: 0.82rem; height: 0.82rem; border-radius: 999px; background: var(--accent); border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--line); }
+    .timeline-item strong { color: var(--accent-dark); }
+    .timeline-item span { display: block; color: var(--muted); font-size: 0.93rem; font-family: Arial, Helvetica, sans-serif; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 1rem 0; }
+    .filter-btn { border: 1px solid var(--line); background: var(--soft); color: var(--ink); padding: 0.42rem 0.72rem; border-radius: 999px; cursor: pointer; font-family: Arial, Helvetica, sans-serif; font-size: 0.84rem; }
+    .filter-btn.active { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+    .search-box { width: 100%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 0.75rem 0.9rem; font-size: 0.96rem; font-family: Arial, Helvetica, sans-serif; }
+
+    .list-stack { display: grid; gap: 0.85rem; margin-top: 1rem; }
+    .record { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 14px; padding: 0.95rem; background: var(--paper); }
+    .record.hidden { display: none; }
+    .record-title { display: block; font-weight: 700; color: var(--ink); line-height: 1.35; }
+    .record-meta { display: block; color: var(--muted); margin-top: 0.25rem; font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; }
+    .tag { display: inline-block; margin-top: 0.55rem; margin-right: 0.35rem; background: var(--soft-blue); color: var(--accent-2); border: 1px solid var(--line); padding: 0.16rem 0.48rem; border-radius: 999px; font-size: 0.78rem; font-family: Arial, Helvetica, sans-serif; font-weight: 700; }
+
+    details { border: 1px solid var(--line); border-radius: 14px; background: var(--paper); padding: 0.9rem 1rem; margin-bottom: 0.8rem; }
+    summary { cursor: pointer; color: var(--accent-dark); font-weight: 700; }
+
+    .review-grid { display: grid; gap: 0.65rem; margin-top: 1rem; }
+    .review-row { display: grid; grid-template-columns: 54px 1fr; gap: 0.75rem; align-items: center; padding: 0.65rem; background: var(--soft); border: 1px solid var(--line); border-radius: 14px; }
+    .review-count { display: inline-grid; place-items: center; min-height: 42px; border-radius: 12px; background: var(--accent-dark); color: #fff; font-family: Arial, Helvetica, sans-serif; font-weight: 700; }
+
+    .side-list { list-style: none; padding-left: 0; }
+    .side-list li { border-bottom: 1px solid var(--line); padding: 0.55rem 0; margin-bottom: 0; }
+    .side-list li:last-child { border-bottom: none; }
+    .link-grid { display: grid; gap: 0.55rem; }
+    .link-grid a, .copy-email { border: 1px solid var(--line); background: var(--soft); color: var(--ink); border-radius: 12px; padding: 0.65rem 0.75rem; font-family: Arial, Helvetica, sans-serif; font-size: 0.92rem; text-align: left; }
+    .copy-email { cursor: pointer; width: 100%; }
+    .link-grid a:hover, .copy-email:hover { text-decoration: none; border-color: var(--accent); }
+    .notice { background: var(--soft-blue); border: 1px solid var(--line); border-radius: 14px; padding: 0.85rem; color: var(--ink); font-size: 0.94rem; }
+
+    .footer { background: var(--accent-dark); color: #fff; text-align: center; padding: 1.5rem; font-size: 0.92rem; }
+    .footer a { color: #fff; text-decoration: underline; }
+    #topBtn { position: fixed; right: 1rem; bottom: 1rem; z-index: 1000; display: none; border: none; background: var(--accent-dark); color: #fff; width: 44px; height: 44px; border-radius: 999px; cursor: pointer; box-shadow: var(--shadow); font-size: 1.15rem; }
+
+
+    .subsection-heading {
+      margin: 1.25rem 0 0.75rem;
+      padding: 0.82rem 1rem;
+      border-left: 5px solid var(--gold);
+      border-radius: 14px;
+      background: var(--soft-blue);
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 24px rgba(31, 36, 40, 0.06);
+    }
+
+    .subsection-heading.peer-reviewer-heading {
+      border-left-color: var(--accent-2);
+      background:
+        linear-gradient(135deg, rgba(15, 76, 92, 0.14), rgba(184, 134, 44, 0.10)),
+        var(--soft-blue);
+      color: var(--accent-2);
+    }
+
+    .subsection-heading.scientific-review-heading {
+      border-left-color: var(--accent);
+      background:
+        linear-gradient(135deg, rgba(122, 31, 31, 0.13), rgba(184, 134, 44, 0.12)),
+        var(--soft);
+      color: var(--accent-dark);
+    }
+
+    [data-theme="dark"] .subsection-heading.peer-reviewer-heading {
+      background:
+        linear-gradient(135deg, rgba(123, 211, 225, 0.16), rgba(230, 189, 99, 0.10)),
+        var(--soft-blue);
+      color: var(--accent-2);
+    }
+
+    [data-theme="dark"] .subsection-heading.scientific-review-heading {
+      background:
+        linear-gradient(135deg, rgba(216, 123, 123, 0.16), rgba(230, 189, 99, 0.10)),
+        var(--soft);
+      color: var(--accent-dark);
+    }
+
+    .portrait {
+      height: 360px;
+      min-height: 360px;
+      padding: 0;
+      overflow: hidden;
+      border-style: solid;
+    }
+
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    @media (max-width: 1050px) { .hero-inner, main { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .profile-card { max-width: 680px; } }
+    @media (max-width: 820px) { .menu-btn { display: inline-flex; } .nav { display: none; width: 100%; padding-top: 0.8rem; justify-content: flex-start; } .nav.open { display: flex; } .nav-wrap { align-items: flex-start; flex-wrap: wrap; } .brand { white-space: normal; } .grid-2, .grid-3, .stats { grid-template-columns: 1fr; } .hero-inner { padding-top: 3.2rem; } }
+    @media print { .topbar, .button-row, .filters, .search-box, #topBtn, .progress, .nav-actions { display: none !important; } body { background: #fff; color: #000; } main, .hero-inner, .stats { display: block; max-width: 100%; } section, aside .box, .stat, .profile-card { box-shadow: none; break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="topbar">
+    <div class="nav-wrap">
+      <a class="brand" href="#home">Edmund Fosu Agyemang</a>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#honors">Honors</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#service">Service</a>
+        <a href="#projects">Projects</a>
+        <a href="#presentations">Presentations</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <p class="label">Academic CV and Research Profile</p>
+        <h1>Edmund Fosu Agyemang</h1>
+        <p class="role">PhD Student in Biostatistics | Artificial Intelligence, Machine Learning, Applied Statistics, and Data Science Researcher</p>
+        <p class="lead">
+          I work at the intersection of artificial intelligence (AI), applied statistics, biostatistics, machine learning (ML), data science, time series analysis, anomaly detection, computational statistics, and public health analytics.
+        </p>
+        <div class="keywords" aria-label="Research keywords">
+          <span>Artificial Intelligence</span><span>Biostatistics</span><span>Applied Statistics</span><span>Health Data Science</span><span>Machine Learning</span><span>Time Series</span><span>Anomaly Detection</span><span>Computational Statistics</span>
+        </div>
+        <div class="button-row">
+          <a class="button" href="#publications">View 24 Published Papers since 2022</a>
+          <a class="button secondary" href="#experience">Teaching and Research Duties</a>
+          <a class="button secondary" href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="portrait">
+          <img src="Professional Headshot.png" alt="Edmund Fosu Agyemang" />
+        </div>
+        <div class="profile-facts">
+          <div class="fact"><span>🎓</span><div><b>Current Program</b><small>PhD in Biostatistics, Tulane University</small></div></div>
+          <div class="fact"><span>🏛️</span><div><b>Department</b><small>Biostatistics and Data Science</small></div></div>
+          <div class="fact"><span>📍</span><div><b>Location</b><small>New Orleans, Louisiana, United States</small></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="stats" aria-label="CV summary statistics">
+    <div class="stat"><strong>24</strong><span>Published papers since 2022</span></div>
+    <div class="stat"><strong>8</strong><span>Honors and awards included</span></div>
+    <div class="stat"><strong>15</strong><span>Selected peer-review journal roles included</span></div>
+    <div class="stat"><strong>50+</strong><span>Scientific review records by journal included</span></div>
+    <div class="stat"><strong>8</strong><span>Selected conferences and presentations included</span></div>
+  </div>
+
+  <main>
+    <div>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I am currently a PhD student in Biostatistics at Tulane University with a research profile that integrates artificial intelligence, applied statistics, machine learning, data science, public health analytics, and computational statistics. My academic work emphasizes methodological development, applied modeling, reproducible analysis, and the responsible translation of quantitative evidence into health and interdisciplinary decision-making.
+        </p>
+        <p>
+          My current research agenda includes design-optimized stratified sampling, missing-data imputation, class imbalance learning, explainable artificial intelligence, deep learning fusion, risk prediction, and robust healthcare evidence generation under practical data limitations.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-item"><strong>Doctor of Philosophy (PhD), Biostatistics</strong><span>Tulane University, Louisiana, USA | 2025 - Date</span></div>
+          <div class="timeline-item"><strong>Master of Science (MS), Applied Statistics and Data Science</strong><span>The University of Texas Rio Grande Valley, Texas, USA | 2023 - 2025</span></div>
+          <div class="timeline-item"><strong>Master of Philosophy (MPhil), Statistics</strong><span>University of Ghana, Accra, Ghana | 2019 - 2021</span></div>
+          <div class="timeline-item"><strong>Bachelor of Science (BSc), Statistics</strong><span>University of Ghana, Accra, Ghana | 2014 - 2018</span></div>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2>Research Areas</h2>
+        <div class="grid-2">
+          <article class="card"><h3>Artificial Intelligence and Health Data Science</h3><p>Predictive modeling, clinical decision support, public health surveillance, disease forecasting, and healthcare risk analytics.</p></article>
+          <article class="card"><h3>Machine Learning for Imbalanced Data</h3><p>Hybrid resampling, oversampling, stacking ensembles, model interpretability, and performance evaluation under skewed class distributions.</p></article>
+          <article class="card"><h3>Time Series and Anomaly Detection</h3><p>SARIMA, Prophet, Gaussian process regression, wavelet transforms, LSTM architectures, and anomaly detection schemes.</p></article>
+          <article class="card"><h3>Statistical Design and Inference</h3><p>Design and analysis of experiments, stratified sampling, nonresponse adjustment, simulation studies, and computational statistics.</p></article>
+        </div>
+      </section>
+
+      <section id="honors">
+        <h2>Honors and Awards</h2>
+        <p class="section-intro">This section includes all honors and awards from the United States of America.</p>
+        <div class="list-stack" id="honorsList"></div>
+      </section>
+
+      <section id="publications">
+        <h2>Published Publications</h2>
+        <p class="section-intro">Use the search box and filter buttons to navigate through my published papers quickly.</p>
+        <input class="search-box" id="pubSearch" type="search" placeholder="Search publications by title, author, journal, year, or keyword..." aria-label="Search publications" />
+        <div class="filters" aria-label="Publication filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="2026" type="button">2026</button>
+          <button class="filter-btn" data-filter="2025" type="button">2025</button>
+          <button class="filter-btn" data-filter="2024" type="button">2024</button>
+          <button class="filter-btn" data-filter="2023" type="button">2023</button>
+          <button class="filter-btn" data-filter="2022" type="button">2022</button>
+          <button class="filter-btn" data-filter="ai" type="button">AI and ML</button>
+          <button class="filter-btn" data-filter="health" type="button">Health</button>
+          <button class="filter-btn" data-filter="time" type="button">Time Series</button>
+          <button class="filter-btn" data-filter="statistics" type="button">Statistics</button>
+        </div>
+        <div class="list-stack" id="pubList"></div>
+      </section>
+
+      <section id="experience">
+        <h2>Work Experience, Teaching, and Research Duties</h2>
+        <p class="section-intro">This section includes the full teaching, course-assistance, research, and internship duties I have engaged in.</p>
+        <div id="experienceList"></div>
+      </section>
+
+      <section id="service">
+        <h2>Academic Service and Peer Review</h2>
+        <div class="grid-2">
+          <article class="card"><h3>Editorial Board Membership</h3><ul><li>Journal of HIV/AIDS Research, 2024 - Date.</li><li>Journal Multidisciplinar, Montevideo, 2024 - Date.</li><li>Global Open Share Publishing, 2024 - Date.</li></ul></article>
+          <article class="card"><h3>Professional Membership</h3><ul><li>Asian Council of Science Editors, Membership ID: 24268717, 2024 - Date.</li><li>American Statistical Association, Membership ID: 258354, 2023 - Date.</li><li>American Mathematical Society, Membership ID: AGEDFA, 2023 - Date.</li></ul></article>
+        </div>
+        <div class="subsection-heading peer-reviewer-heading">Peer Reviewer for Selected Academic Journals</div>
+        <div class="list-stack" id="reviewerList"></div>
+        <div class="subsection-heading scientific-review-heading">Scientific Reviews Undertaken in Peer-Reviewed Journals, 2022 - Date</div>
+        <div class="review-grid" id="reviewCounts"></div>
+      </section>
+
+      <section id="projects">
+        <h2>Academic Projects and Submitted Research</h2>
+        <div class="list-stack" id="projectList"></div>
+        <h3>Selected Current Manuscripts</h3>
+        <details>
+          <summary>Publications currently under review</summary>
+          <div class="list-stack" id="underReviewList"></div>
+        </details>
+        <details>
+          <summary>PhD three-paper format manuscripts currently in progress</summary>
+          <ol id="ongoingList"></ol>
+        </details>
+      </section>
+
+      <section id="presentations">
+        <h2>Selected Conferences and Professional Presentations</h2>
+        <div class="list-stack" id="conferenceList"></div>
+      </section>
+
+      <section id="training">
+        <h2>Selected Training and Workshops</h2>
+        <div class="list-stack" id="trainingList"></div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h2>Profile</h2>
+        <ul class="side-list">
+          <li><strong>Name:</strong><br />Edmund Fosu Agyemang</li>
+          <li><strong>Current Affiliation:</strong><br />Tulane University</li>
+          <li><strong>Department:</strong><br />Biostatistics and Data Science</li>
+          <li><strong>Current Degree:</strong><br />PhD in Biostatistics</li>
+          <li><strong>Public Location:</strong><br />New Orleans, Louisiana, United States</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>Quick Highlights</h2>
+        <ul>
+          <li>24 published papers since 2022.</li>
+          <li>8 United States of America honors and awards.</li>
+          <li>15 selected academic journals listed for peer-review service.</li>
+          <li>50+ journal-based scientific review records listed.</li>
+          <li>8 selected conferences and professional presentations.</li>
+          <li>6 selected training and workshop records.</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>Academic Links</h2>
+        <div class="link-grid">
+          <a href="https://orcid.org/0000-0001-8124-4493" target="_blank" rel="noopener">ORCID</a>
+          <a href="https://www.researchgate.net/profile/Edmund-Agyemang?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a>
+          <a href="https://scholar.google.com/citations" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://loop.frontiersin.org/people/3432310/bio" target="_blank" rel="noopener">Frontiers Loop</a>
+          <a href="https://github.com/Agyemang1z" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://drive.google.com/file/d/1vSnkljTZlSQqq-mgjlPLGYLunG8hR1jB/view?usp=sharing" target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>Computing Skills</h2>
+        <p><strong>Statistical software:</strong><br />R, Python, SAS, STATA, Minitab, IBM SPSS, JASP, and related tools.</p>
+        <p><strong>Research and publishing:</strong><br />LaTeX, R Markdown, Microsoft Office Suite, and reproducible research workflows.</p>
+      </div>
+
+      <div class="box" id="contact">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong><br /><a href="mailto:eagyemang@tulane.edu">eagyemang@tulane.edu</a></p>
+        <p><strong>Alternative emails:</strong><br /><a href="mailto:edmundfosu6@gmail.com">edmundfosu6@gmail.com</a><br /><a href="mailto:edmund.agyemang01@utrgv.edu">edmund.agyemang01@utrgv.edu</a></p>
+        <button class="copy-email" type="button" id="copyEmail">Copy Tulane email</button>
+        <p class="notice" style="margin-top: 1rem;">For research collaboration and the opportunity to know more about my research areas, you can reach out to me via my institutional email or through my personal email above. Thank you.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Edmund Fosu Agyemang. Last updated: June 2026.</p>
+    <p><a href="#home">Back to top</a></p>
+  </footer>
+
+  <button id="topBtn" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    const CV_DATA = {
+  "publications": [
+    {
+      "year": "2026",
+      "category": "ai health",
+      "authors": "Daniela Candanedo, Edmund Fosu Agyemang, Farhana Chaudhry, Taylor Franks, Bailey Taylor, Kevin Siliezar, and Samuel Kakraba",
+      "title": "Leveraging Machine Learning Algorithms and Explainable AI for Predicting Mental Health Disorder Treatment at the Workplace",
+      "venue": "Acta Psychologica, Vol. 267, pages 1-15",
+      "link": "https://doi.org/10.1016/j.actpsy.2026.107081"
+    },
+    {
+      "year": "2026",
+      "category": "ai health time",
+      "authors": "Edmund Fosu Agyemang, Hansapani Rodrigo, and Vincent Agbenyeavu",
+      "title": "A Comparative Analysis of Traditional and Deep Learning Architectures for Influenza A Infectious Diseases Forecasting",
+      "venue": "Computers in Biology and Medicine, Vol. 211, pages 1-20",
+      "link": "https://doi.org/10.1016/j.compbiomed.2026.111736"
+    },
+    {
+      "year": "2026",
+      "category": "health ai",
+      "authors": "Samuel Kakraba, Edmund Fosu Agyemang, and Sudesh Srivastav",
+      "title": "Cognitive Sovereignty and Decolonial Public Health: Reclaiming Epistemic Authority in the Global AI Era",
+      "venue": "Frontiers in Public Health, Vol. 14, pages 1-20",
+      "link": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2026.1785170/full"
+    },
+    {
+      "year": "2026",
+      "category": "ai health",
+      "authors": "Samuel Kakraba, Aayire C. Yadem, Kuukua E. Abraham, Chaudhry Farhana, and Edmund Fosu Agyemang",
+      "title": "Unraveling Protein Secrets: Machine Learning Unveils Novel Biologically Significant Associations Among Amino Acids",
+      "venue": "Network Modeling Analysis in Health Informatics and Bioinformatics, Vol. 15(114), pages 1-20",
+      "link": "https://link.springer.com/article/10.1007/s13721-026-00732-4"
+    },
+    {
+      "year": "2026",
+      "category": "ai health",
+      "authors": "Samuel Kakraba, Edmund Fosu Agyemang, and Robert J. Shmookler Reis",
+      "title": "Accelerating Discovery of Leukemia Inhibitors Using AI-Driven Quantitative Structure-Activity Relationship: Algorithm Development and Validation",
+      "venue": "JMIR AI, Vol. 5, pages 1-22",
+      "link": "https://ai.jmir.org/2026/1/e81552"
+    },
+    {
+      "year": "2025",
+      "category": "ai health app",
+      "authors": "Han Wenzheng, Edmund Fosu Agyemang, Sudesh Srivastav, Jeffrey Shaffer, and Samuel Kakraba",
+      "title": "AI-Enhanced Multi-Algorithm R Shiny App for Predictive Modeling and Analytics: A Case Study of Alzheimer's Disease Diagnostics",
+      "venue": "JMIR Aging, Vol. 25(1), pages 1-37",
+      "link": "https://aging.jmir.org/2025/1/e70272"
+    },
+    {
+      "year": "2025",
+      "category": "time health statistics",
+      "authors": "Edmund Fosu Agyemang",
+      "title": "A Gaussian Process Regression and Wavelet Transform Time Series Approaches to Modeling Influenza A",
+      "venue": "Computers in Biology and Medicine, Vol. 184, Article 109367",
+      "link": "https://doi.org/10.1016/j.compbiomed.2024.109367"
+    },
+    {
+      "year": "2025",
+      "category": "health statistics",
+      "authors": "Edmund Fosu Agyemang, Joseph Agyapong Mensah, Eric Nyarko, and Ezekiel Nii Noye Nortey",
+      "title": "How Dependable Is World Continental COVID-19 Data? Disclosure of Inconsistencies in Daily Reportage Confirmed Cases, Recovered Cases and Deaths During First Wave",
+      "venue": "Jordan Journal of Mathematics and Statistics, Vol. 18(2), pages 261-274",
+      "link": "https://jjms.yu.edu.jo/index.php/jjms/article/view/1264"
+    },
+    {
+      "year": "2024",
+      "category": "ai health",
+      "authors": "Edmund Fosu Agyemang",
+      "title": "Modelling Tinnitus Functional Index Reduction Using Supervised Machine Learning Algorithms",
+      "venue": "Statistics in Transition New Series, Vol. 25(4), pages 51-77",
+      "link": "https://sit.stat.gov.pl/Article/971"
+    },
+    {
+      "year": "2024",
+      "category": "ai statistics",
+      "authors": "Edmund Fosu Agyemang",
+      "title": "Anomaly Detection Using Unsupervised Machine Learning Algorithms: A Simulation Study",
+      "venue": "Scientific African, Article e02386",
+      "link": "https://www.sciencedirect.com/science/article/pii/S2468227624003284"
+    },
+    {
+      "year": "2025",
+      "category": "ai health statistics",
+      "authors": "Edmund Fosu Agyemang, Joseph Agyapong Mensah, Eric Nyarko, Dennis Arku, Benedict Mbeah-Baiden, Enock Opoku, and Ezekiel Nii Noye Nortey",
+      "title": "Addressing Class Imbalance Problem in Health Data Classification: Practical Application From an Oversampling Viewpoint",
+      "venue": "Applied Computational Intelligence and Soft Computing, 2025",
+      "link": "https://onlinelibrary.wiley.com/doi/full/10.1155/acis/1013769"
+    },
+    {
+      "year": "2025",
+      "category": "ai health",
+      "authors": "Enoch Sakyi-Yeboah, Edmund Fosu Agyemang, Vincent Agbeyeavu, Akua Osei-Nkwantabisa, Priscilla Kissi-Appiah, Lateef Moshod, Lawrence Agbota, and Ezekiel N. N. Nortey",
+      "title": "Heart Disease Prediction Using Ensemble Tree Algorithms: A Supervised Learning Perspective",
+      "venue": "Applied Computational Intelligence and Soft Computing, 2025",
+      "link": "https://onlinelibrary.wiley.com/doi/full/10.1155/acis/1989813"
+    },
+    {
+      "year": "2024",
+      "category": "ai health statistics",
+      "authors": "Eric Nyarko, Edmund Fosu Agyemang, Ebenezer Kwesi Ameho, Louis Agyekum, and Eduardo Alberto Fernandez",
+      "title": "A Supervised Machine Learning Statistical Design of Experiment Approach to Modeling the Barriers to Effective Snakebite Treatment in Ghana",
+      "venue": "PLOS Neglected Tropical Diseases, Vol. 18(12), pages 1-15",
+      "link": "https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0012736"
+    },
+    {
+      "year": "2025",
+      "category": "ai time economics",
+      "authors": "Ezekiel N. N. Nortey, Edmund Fosu Agyemang, Enoch Sakyi-Yeboah, Obu-Amoah Ampomah, and Louis Agyekum",
+      "title": "AI Meets Economics: Can Machine Learning Surpass Conventional Statistical Models in Inflation Time Series Forecasting?",
+      "venue": "Data Science in Finance and Economics, Vol. 5(2), pages 136-155",
+      "link": "https://www.aimspress.com/article/doi/10.3934/DSFE.2025007"
+    },
+    {
+      "year": "2024",
+      "category": "health public",
+      "authors": "Davida Mensah, Edmund Fosu Agyemang, and Constance A. Gewa",
+      "title": "Understanding Women, Infants and Children Feeding Decisions in Emergencies: The Case of COVID-19 and the Formula Shortage",
+      "venue": "Journal of Health, Medicine and Nursing, Vol. 118, pages 41-64",
+      "link": "https://www.iiste.org/Journals/index.php/JHMN/article/view/62728/64801"
+    },
+    {
+      "year": "2024",
+      "category": "economics statistics",
+      "authors": "Edmund Fosu Agyemang and Godfred Alufaar Bokpin",
+      "title": "The Impact of Digital Financial Services on Women's Economic Empowerment: Analysing Social Networks, Risk and Time Preferences",
+      "venue": "International Journal of Economic Policy Studies, 2024",
+      "link": "https://doi.org/10.1007/s42495-024-00148-w"
+    },
+    {
+      "year": "2024",
+      "category": "time economics statistics",
+      "authors": "Ezekiel Nii Noye Nortey, Ruben Agbeli, Godwin Debrah, Theophilus Narh-Ansah, and Edmund Fosu Agyemang",
+      "title": "A GARCH-MIDAS Approach to Modelling Stock Returns",
+      "venue": "Communications for Statistical Applications and Methods, Vol. 31(5), pages 535-556",
+      "link": "https://doi.org/10.29220/CSAM.2024.31.5.535"
+    },
+    {
+      "year": "2024",
+      "category": "ai education",
+      "authors": "Edmund Fosu Agyemang, Joseph A. Mensah, Obu-Amoah Ampomah, Louis Agyekum, Justice Akuoko-Frimpong, Ama Quansah, and Oluwaferanmi Muideen Akinlosotu",
+      "title": "Predicting Students' Academic Performance Via Machine Learning Algorithms: An Empirical Review and Practical Application",
+      "venue": "Journal of Computer Engineering and Intelligent Systems, Vol. 15(1), pages 86-102",
+      "link": "https://www.iiste.org/Journals/index.php/CEIS/article/view/62565/64629"
+    },
+    {
+      "year": "2024",
+      "category": "ai health",
+      "authors": "Lawrence Agbota, Edmund Fosu Agyemang, Priscilla Kissi-Appiah, Lateef Moshod, Akua Osei-Nkwantabisa, Vincent Agbeyeavu, Abraham Nsiah, and Augustina Adjei",
+      "title": "Enhancing Tumor Classification Through Machine Learning Algorithms for Breast Cancer Diagnosis",
+      "venue": "Journal of Computer Engineering and Intelligent Systems, Vol. 14(1), pages 71-85",
+      "link": "https://www.iiste.org/Journals/index.php/CEIS/article/view/62453/64508"
+    },
+    {
+      "year": "2023",
+      "category": "statistics public",
+      "authors": "Edmund Fosu Agyemang, Ezekiel Nii Noye Nortey, Richard Minkah, and Kwame Asah-Asante",
+      "title": "What the Numbers Say: First and Second Digit Based Comparative Tests and Its Application to Ghana's Presidential Elections",
+      "venue": "Journal of Model Assisted Statistics and Applications, Vol. 18(2), pages 183-192",
+      "link": "http://dx.doi.org/10.3233/mas-221418"
+    },
+    {
+      "year": "2023",
+      "category": "statistics public",
+      "authors": "Edmund Fosu Agyemang, Ezekiel Nii Noye Nortey, Richard Minkah, and Kwame Asah-Asante",
+      "title": "Baseline Comparative Analysis and Review of Election Forensics: Application to Ghana's 2012 and 2020 Presidential Elections",
+      "venue": "Heliyon, Vol. 9(8), Article e18276",
+      "link": "https://doi.org/10.1016/j.heliyon.2023.e18276"
+    },
+    {
+      "year": "2023",
+      "category": "education public statistics",
+      "authors": "Eric Nyarko, Edmund Fosu Agyemang, and Dennis Arku",
+      "title": "COVID-19 and Online Teaching in Higher Education: A Discrete Choice Experiment",
+      "venue": "Journal of Model Assisted Statistics and Applications, Vol. 18(2), pages 115-123",
+      "link": "http://dx.doi.org/10.3233/mas-221403"
+    },
+    {
+      "year": "2023",
+      "category": "time statistics public",
+      "authors": "Edmund Fosu Agyemang, Joseph A. Mensah, Eric Ocran, Enock Opoku, and Ezekiel Nii Noye Nortey",
+      "title": "Time Series Based Road Traffic Accidents Forecasting via SARIMA and Facebook Prophet Model with Potential Changepoints",
+      "venue": "Heliyon, Vol. 9(12), Article e22544",
+      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10709357/"
+    },
+    {
+      "year": "2022",
+      "category": "statistics public",
+      "authors": "Ezekiel Nii Noye Nortey, Edmund Fosu Agyemang, Richard Minkah, and Kwame Asah-Asante",
+      "title": "Bayesian Estimation of Presidential Elections in Ghana: A Validation Approach",
+      "venue": "African Journal of Applied Statistics, Vol. 9(1), pages 1297-1317",
+      "link": "https://doi.org/10.16929/ajas/2022.1297.269"
+    }
+  ],
+  "honors": [
+    [
+      "2026",
+      "Outstanding Thesis Award in Applied Statistics and Data Science",
+      "College of Science, UTRGV, USA"
+    ],
+    [
+      "2026",
+      "Boyd Harshbarger Summer Research Conference Travel Award",
+      "Southern Regional Council on Statistics, USA"
+    ],
+    [
+      "2025-2029",
+      "Dean's Research Council Scholarship Award",
+      "Tulane University, USA"
+    ],
+    [
+      "2025",
+      "Outstanding Masters Research Performance Award",
+      "UTRGV, USA"
+    ],
+    [
+      "2025",
+      "Honor Roll for Academic Excellence, Fall 2024 Semester",
+      "UTRGV, USA"
+    ],
+    [
+      "2024",
+      "Outstanding Masters Research Performance Award",
+      "UTRGV, USA"
+    ],
+    [
+      "2024",
+      "Honor Roll for Academic Excellence, Fall 2023 Semester",
+      "UTRGV, USA"
+    ],
+    [
+      "2023-2025",
+      "Presidential Research Fellowship Award",
+      "UTRGV, USA"
+    ]
+  ],
+  "experiences": [
+    {
+      "title": "Dean's Research Council Scholar",
+      "institution": "Tulane University, USA",
+      "date": "Aug. 2025 - Date",
+      "items": [
+        "Collaborate with faculty, fellow researchers, and external partners to ensure smooth progress of research projects.",
+        "Use statistical tools, coding, and qualitative methods to process research data, generate insights, and contribute to preliminary findings.",
+        "Contribute to writing, editing, and formatting academic papers, reports, and funding proposals while following institutional and style requirements.",
+        "Assist students in applied AI and machine learning methods in biostatistics, including research design, development, and execution."
+      ]
+    },
+    {
+      "title": "Presidential Research Fellow",
+      "institution": "The University of Texas Rio Grande Valley, USA",
+      "date": "Aug. 2023 - July 2025",
+      "items": [
+        "Gathered, analyzed, and synthesized scholarly sources, datasets, and archival materials to support ongoing research projects.",
+        "Assisted in developing experimental designs, survey instruments, and computational models aligned with research objectives and ethical standards.",
+        "Assisted in drafting research papers and reports in artificial intelligence and data science.",
+        "Supported students in interdisciplinary applied data science and statistics projects."
+      ]
+    },
+    {
+      "title": "Adjunct Faculty (Courses Taught)",
+      "institution": "Ashesi University, Ghana",
+      "date": "Jan. 2022 - July 2023",
+      "items": [
+        "MATH 221: Statistics",
+        "MATH 112 and 122: Precalculus I and II",
+        "MATH 144: Applied Calculus"
+      ]
+    },
+    {
+      "title": "Lead Tutor (Courses Taught)",
+      "institution": "University of Ghana School of Distance Education, Evening and Weekends",
+      "date": "Jan. 2022 - July 2023",
+      "items": [
+        "STAT 111 and 112: Introduction to Statistics and Probability I and II",
+        "MATH 001: Mature Access Course, Mathematics, Quantitative Methods"
+      ]
+    },
+    {
+      "title": "Graduate Assistant (Courses Assisted)",
+      "institution": "Department of Statistics and Actuarial Science, University of Ghana",
+      "date": "Aug. 2020 - Dec. 2021",
+      "items": [
+        "STAT 111: Introduction to Statistics and Probability I",
+        "STAT 601: Estimation and Decision Theory",
+        "STAT 602: Statistical Inference: Test of Hypothesis",
+        "ACTU 611: Regression and Time Series Analysis",
+        "Assisted final-year undergraduate students in applied statistics projects.",
+        "Provided support for the department's free consultation service for researchers within and outside the university."
+      ]
+    },
+    {
+      "title": "Graduate Teaching Assistant (Courses Assisted)",
+      "institution": "Regent University of Science and Technology, Weekends",
+      "date": "Aug. 2020 - Dec. 2021",
+      "items": [
+        "STAT 403: Multivariate Calculus",
+        "STAT 405: Linear Algebra",
+        "STAT 532: Modern Statistical Inference",
+        "STAT 533: Probability and Probability Distribution",
+        "STAT 549: Advanced Sampling Techniques"
+      ]
+    },
+    {
+      "title": "Undergraduate Teaching Assistant, National Service (Courses Assisted)",
+      "institution": "University of Ghana",
+      "date": "Aug. 2018 - July 2019",
+      "items": [
+        "UGRC 150: Numeracy Skills",
+        "STAT 335: Sample Survey Methods",
+        "STAT 336: Design of Experiments",
+        "STAT 443: Theory of Sampling",
+        "STAT 445: Regression Analysis",
+        "STAT 448: Analysis of Experimental Designs"
+      ]
+    },
+    {
+      "title": "Graduate Research Collaborator",
+      "institution": "Connolly Alexander Institute for Data Science, Tulane University",
+      "date": "May 2026 - Aug. 2026",
+      "items": [
+        "Collaborated on a joint seed grant initiative between the Connolly Alexander Institute for Data Science and the Tulane Weatherhead School of Public Health and Tropical Medicine to refine Version 2 of an AI-enhanced multi-model R Shiny application for predictive analytics in Alzheimer's disease.",
+        "Supported application validation using large-scale electronic health data through preprocessing, analytical evaluation, interpretation, and manuscript preparation."
+      ]
+    },
+    {
+      "title": "Graduate Research Coordinator",
+      "institution": "Department of Biostatistics and Data Science, Tulane University",
+      "date": "May 2025 - Aug. 2025",
+      "items": [
+        "Assisted in the design, evaluation, and refinement of Version 1 of an AI-enhanced multi-model R Shiny application for Alzheimer's disease predictive analytics.",
+        "Coordinated and mentored graduate students by guiding applied data science projects into structured, publication-ready manuscripts."
+      ]
+    }
+  ],
+  "reviewerJournals": [
+    [
+      "2025-Date",
+      "International Journal of Electrical and Computer Engineering (IJECE)",
+      "https://www.researchgate.net/publication/390771756_International_Journal_of_Electrical_and_Computer_Engineering_Reviewer_Certificate_Recognition"
+    ],
+    [
+      "2025-Date",
+      "Statistics in Transition New Series (SinTs)",
+      "https://www.researchgate.net/publication/391150196_Statistics_in_Transition_New_Series_SinTs_Reviewer_Recognition"
+    ],
+    [
+      "2025-Date",
+      "Humanities and Social Sciences Communications",
+      "https://www.researchgate.net/publication/390771958_Humanities_and_Social_Sciences_Communications_Reviewer_Recognition_Certificate"
+    ],
+    [
+      "2025-Date",
+      "Journal of Multidisciplinary Healthcare",
+      "https://www.researchgate.net/publication/390771868_Journal_of_Multidisciplinary_Healthcare_Reviewer_Recognition"
+    ],
+    [
+      "2025-Date",
+      "PLOS ONE",
+      "https://orcid.org/0000-0001-8124-4493"
+    ],
+    [
+      "2024-Date",
+      "Journal of American Educational Research Association (AERA) Open",
+      "https://orcid.org/0000-0001-8124-4493"
+    ],
+    [
+      "2024-Date",
+      "IEEE Transactions on Intelligent Transportation Systems",
+      "https://orcid.org/0000-0001-8124-4493"
+    ],
+    [
+      "2024-Date",
+      "American Educational Research Journal",
+      "https://orcid.org/0000-0001-8124-4493"
+    ],
+    [
+      "2024-Date",
+      "Studies in Educational Evaluation",
+      "https://www.researchgate.net/publication/384892593_Studies_in_Educational_Evaluation_Elsevier_Reviewer_Certificate"
+    ],
+    [
+      "2024-Date",
+      "Heliyon",
+      "https://orcid.org/0000-0001-8124-4493"
+    ],
+    [
+      "2024-Date",
+      "Expert Systems with Applications, Elsevier",
+      "https://www.researchgate.net/publication/383238485_Expert_Systems_with_Applications_Journal_Elsevier_Reviewer_Certificate_Recognition"
+    ],
+    [
+      "2024-Date",
+      "Open Journal of Social Sciences, Scientific Research Academic Publisher",
+      ""
+    ],
+    [
+      "2023-Date",
+      "Journal of Public Health (JPH), Oxford University Press",
+      "https://www.researchgate.net/publication/378396684_Journal_of_Public_Health_Oxford_University_Press_2023_Reviewer_Certificate"
+    ],
+    [
+      "2023-Date",
+      "Journal of Computational and Cognitive Engineering",
+      ""
+    ],
+    [
+      "2022-Date",
+      "Advances in Artificial Intelligence and Machine Learning",
+      "https://www.researchgate.net/publication/393228967_Advances_in_Artificial_Intelligence_and_Machine_Learning_Reviewer_Appreciation_Certificate_2022-2025"
+    ]
+  ],
+  "reviewCounts": [
+    [
+      10,
+      "Expert Systems with Applications"
+    ],
+    [
+      3,
+      "Journal of Computational and Cognitive Engineering"
+    ],
+    [
+      3,
+      "Advances in Artificial Intelligence and Machine Learning"
+    ],
+    [
+      3,
+      "PLOS ONE"
+    ],
+    [
+      3,
+      "BMC Public Health"
+    ],
+    [
+      3,
+      "Discover Public Health"
+    ],
+    [
+      3,
+      "International Journal of Electrical and Computer Engineering"
+    ],
+    [
+      3,
+      "Studies in Educational Evaluation"
+    ],
+    [
+      2,
+      "Journal of Public Health, Oxford University Press"
+    ],
+    [
+      2,
+      "Open Journal of Social Sciences"
+    ],
+    [
+      1,
+      "PLOS Neglected Tropical Diseases"
+    ],
+    [
+      1,
+      "PLOS Global Public Health"
+    ],
+    [
+      1,
+      "BMC Digital Health"
+    ],
+    [
+      1,
+      "BMC Medical Informatics and Decision Making"
+    ],
+    [
+      1,
+      "BMC Pediatrics"
+    ],
+    [
+      1,
+      "Statistics in Transition New Series"
+    ],
+    [
+      1,
+      "International Journal of Computational Intelligence Systems"
+    ],
+    [
+      1,
+      "Journal of Multidisciplinary Healthcare"
+    ],
+    [
+      1,
+      "Heliyon"
+    ],
+    [
+      1,
+      "Operations Research Forum"
+    ],
+    [
+      1,
+      "American Educational Research Association (AERA) Open"
+    ],
+    [
+      1,
+      "American Educational Research Journal"
+    ],
+    [
+      1,
+      "Fudan Journal of the Humanities and Social Sciences"
+    ],
+    [
+      1,
+      "Frontiers in Sociology"
+    ],
+    [
+      1,
+      "Humanities and Social Sciences Communications"
+    ],
+    [
+      1,
+      "IEEE Transactions on Intelligent Transportation Systems"
+    ]
+  ],
+  "projects": [
+    [
+      "2025-2029, ongoing",
+      "Doctoral Thesis, Tulane University, New Orleans-USA",
+      "Advancing Robust Healthcare Evidence Generation through Design-Optimized Stratified Sampling, Missing-Data Imputation Methods, Class Imbalance Techniques and Explainable Artificial Intelligence (XAI) for Risk Prediction.",
+      ""
+    ],
+    [
+      "2023-2025",
+      "2nd Master's Thesis, The University of Texas Rio Grande Valley, Edinburg-USA",
+      "Sequential Data Modeling of Influenza A via Traditional, DWT-GPR Hybrid, and Deep Learning Architectures.",
+      "https://www.proquest.com/docview/3253950491?pq-origsite=gscholar&fromopenview=true"
+    ],
+    [
+      "2019-2021",
+      "1st Master's Thesis, University of Ghana, Accra-Ghana",
+      "Bayesian Estimation of Presidential Elections and Comparative Analysis of Election Forensics in Ghana.",
+      ""
+    ],
+    [
+      "2014-2018",
+      "Undergraduate Thesis, University of Ghana, Accra-Ghana",
+      "Determinants and Analysis of Road Accident Fatalities in Ghana Based on 1998-2018 Data.",
+      ""
+    ]
+  ],
+  "conferences": [
+    [
+      "April 2026",
+      "Design and Evaluation of an AI-Enhanced Multi-Model R Shiny Application for Predictive Analytics in Alzheimer's Disease.",
+      "Tulane Research, Innovation, and Creativity Summit (TRICS)",
+      ""
+    ],
+    [
+      "Sept. 2025",
+      "AI-Enhanced Multi-Algorithm R Shiny App for Predictive Modeling and Analytics: A Case Study of Alzheimer's Disease Diagnostics.",
+      "AI Research Symposium: Demystifying AI in Public Health, Celia Scott Weatherhead School of Public Health and Tropical Medicine at Tulane University",
+      ""
+    ],
+    [
+      "Feb. 2025",
+      "Public Health in a Changing World: Adapting to Global Threats and Local Realities. Addressing Class Imbalance Problem in Health Data Classification: Practical Application From an Oversampling Viewpoint.",
+      "3rd International Virtual Summit on European Public Health and Healthcare",
+      ""
+    ],
+    [
+      "Aug. 2024",
+      "Joint Conference: 10th Annual Meeting of the Asian Council of Science Editors and 5th Asian Conference on Science, Technology and Medicine.",
+      "Khalidia Palace, Dubai, UAE",
+      "https://www.researchgate.net/publication/383567345_5th_Asian_Conference_on_Science_Technology_Medicine_Certificate_of_Attendance"
+    ],
+    [
+      "April 2024",
+      "Understanding Women, Infants and Children Feeding Decisions in Emergencies: The Case of COVID-19 and the Formula Shortage.",
+      "2024 NWA Education and Training Conference",
+      "https://nwa2024.exordo.com/messages/view/3c555248e2620a7b8c612b2d6c546af4_1215"
+    ],
+    [
+      "April 2024",
+      "Anomaly Detection Using Machine Learning Algorithms: A Simulation Study.",
+      "College of Science Annual Research Conference, UTRGV, Poster Number SJ-4",
+      ""
+    ],
+    [
+      "Jan. 2024",
+      "Quantization for Probability Distributions: AMS Special Session on Modelling with Copulas, Discrete vs Continuous Dependent Data, I.",
+      "2024 Joint Mathematics Meetings, San Francisco",
+      "https://meetings.ams.org/math/jmm2024/meetingapp.cgi/Paper/30892"
+    ],
+    [
+      "Nov. 2022",
+      "Baseline Comparative Analysis and Review of Election Forensics: Application to Ghana's 2012 and 2020 Presidential Elections.",
+      "7th School of Social Sciences International Conference, University of Ghana",
+      ""
+    ]
+  ],
+  "training": [
+    [
+      "Aug. 2025",
+      "Positive Workplace: Preventing Harassment at Work"
+    ],
+    [
+      "July 2025",
+      "Social and Behavioral Responsible Conduct of Research Course 1, CITI"
+    ],
+    [
+      "July 2025",
+      "Human Subjects Research, CITI"
+    ],
+    [
+      "May 2024",
+      "A Workplace Free of Discrimination and Sexual Harassment, UTRGV"
+    ],
+    [
+      "Aug. 2023",
+      "Information Resources Acceptable Use, UTRGV"
+    ],
+    [
+      "Jan. 2022",
+      "HIV Co-morbidities Research Training in Ghana (HIV-ComRT), University of Ghana"
+    ]
+  ],
+  "underReview": [
+    [
+      "Accepted",
+      "Large Language Models for Infectious Disease Surveillance: A Surveillance-Attribute-Centered Scoping Review with Implementation and Governance Agenda",
+      "Frontiers in Artificial Intelligence, Medicine and Public Health"
+    ],
+    [
+      "Under review",
+      "Impact of Missing Data Imputation on the Performance of Machine and Deep Learning Models for Breast Cancer and Leukemia Risk Prediction: A Narrative Review",
+      "Cancer Reports"
+    ],
+    [
+      "First revision",
+      "Harnessing Machine Learning and Model Interpretability for Survival Prediction in Heart Failure Patients",
+      "Clinical Medicine Insights: Cardiology"
+    ],
+    [
+      "First revision",
+      "Sequential Data Modeling of Expected COVID-19 Deaths Prediction in the USA Using Deep Learning Time Series Models with LSTM Autoencoder-Based Anomaly Detection Scheme",
+      "Computer Methods and Programs in Biomedicine Update / related venue as listed in CV"
+    ],
+    [
+      "Under review",
+      "Bankruptcy Prediction via Hybrid Resampling and Stacking Ensemble Techniques with Explainable Artificial Intelligence (XAI)-Driven Analysis",
+      "International Journal of Data Science and Analytics"
+    ],
+    [
+      "Under review",
+      "Enhancing Credit Default Prediction Using Boruta Feature Selection and DBSCAN Algorithm with Different Resampling Techniques",
+      "Journal of Big Data"
+    ],
+    [
+      "Under review",
+      "Toward the Construction of Robust Sequential and Non-Sequential Modelling Techniques for DDoS Cyber Attacks with Explainable AI",
+      "Under review"
+    ]
+  ],
+  "ongoing": [
+    "Comparative Efficiency of Stratified Probability Sampling Allocation Procedures in Addressing Sample Size Requirements and Differential Nonresponse in Healthcare: A Simulation-Based Analysis and Empirical Study Using the RAND Health Insurance Experiment.",
+    "Evaluating the Impact of Imputation Techniques for Missing Values on the Performance of Artificial Learning Models in Breast Cancer Risk Prediction.",
+    "Integrating Explainable Artificial Intelligence (XAI) for Breast Cancer Risk Prediction through Hybrid Resampling, Stacking Ensembles and Deep Learning Fusion to Advance Biomarker Discovery."
+  ]
+};
+
+    const body = document.body;
+    const nav = document.getElementById("nav");
+    const menuBtn = document.getElementById("menuBtn");
+    const themeToggle = document.getElementById("themeToggle");
+    const progress = document.getElementById("progress");
+    const topBtn = document.getElementById("topBtn");
+    const copyEmail = document.getElementById("copyEmail");
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function externalLink(url, text = "Link") {
+      return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${text}</a>` : "";
+    }
+
+    function renderHonors() {
+      document.getElementById("honorsList").innerHTML = CV_DATA.honors.map(item => `
+        <article class="record">
+          <span class="record-title">${escapeHtml(item[1])}</span>
+          <span class="record-meta">${escapeHtml(item[2])} | ${escapeHtml(item[0])}</span>
+        </article>
+      `).join("");
+    }
+
+    function renderPublications() {
+      document.getElementById("pubList").innerHTML = CV_DATA.publications.map((p, i) => `
+        <article class="record pub" data-year="${escapeHtml(p.year)}" data-category="${escapeHtml(p.category)}">
+          <span class="record-title">${i + 1}. ${escapeHtml(p.title)}</span>
+          <span class="record-meta">${escapeHtml(p.authors)}</span>
+          <span class="record-meta"><em>${escapeHtml(p.venue)}</em></span>
+          ${externalLink(p.link, "Publication link")}
+          <span class="tag">${escapeHtml(p.year)}</span>
+        </article>
+      `).join("");
+    }
+
+    function renderExperiences() {
+      const internshipStart = CV_DATA.experiences.findIndex(e => e.title === "Graduate Research Collaborator");
+
+      document.getElementById("experienceList").innerHTML = CV_DATA.experiences.map((e, i) => `
+        ${i === 0 ? `<div class="subsection-heading">Research, Teaching, and Academic Appointments</div>` : ""}
+        ${i === internshipStart ? `<div class="subsection-heading">Academic Internships</div>` : ""}
+        <details ${i < 2 ? "open" : ""}>
+          <summary>${escapeHtml(e.title)} | ${escapeHtml(e.institution)} | ${escapeHtml(e.date)}</summary>
+          <ul>${e.items.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+        </details>
+      `).join("");
+    }
+
+    function renderReviewerJournals() {
+      document.getElementById("reviewerList").innerHTML = CV_DATA.reviewerJournals.map((j, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(j[1])}</span>
+          <span class="record-meta">${escapeHtml(j[0])}</span>
+          ${externalLink(j[2], "Recognition link")}
+        </article>
+      `).join("");
+    }
+
+    function renderReviewCounts() {
+      document.getElementById("reviewCounts").innerHTML = CV_DATA.reviewCounts.map(r => `
+        <div class="review-row">
+          <span class="review-count">${escapeHtml(r[0])}</span>
+          <span>${escapeHtml(r[1])}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderProjects() {
+      document.getElementById("projectList").innerHTML = CV_DATA.projects.map((p, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(p[1])}</span>
+          <span class="record-meta">${escapeHtml(p[0])}</span>
+          <p>${escapeHtml(p[2])}</p>
+          ${externalLink(p[3], "Project link")}
+        </article>
+      `).join("");
+
+      document.getElementById("underReviewList").innerHTML = CV_DATA.underReview.map((m, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(m[1])}</span>
+          <span class="record-meta">${escapeHtml(m[2])} | ${escapeHtml(m[0])}</span>
+        </article>
+      `).join("");
+
+      document.getElementById("ongoingList").innerHTML = CV_DATA.ongoing.map(x => `<li>${escapeHtml(x)}</li>`).join("");
+    }
+
+    function renderConferences() {
+      document.getElementById("conferenceList").innerHTML = CV_DATA.conferences.map((c, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(c[1])}</span>
+          <span class="record-meta">${escapeHtml(c[2])} | ${escapeHtml(c[0])}</span>
+          ${externalLink(c[3], "Event link")}
+        </article>
+      `).join("");
+    }
+
+    function renderTraining() {
+      document.getElementById("trainingList").innerHTML = CV_DATA.training.map((t, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(t[1])}</span>
+          <span class="record-meta">${escapeHtml(t[0])}</span>
+        </article>
+      `).join("");
+    }
+
+    function filterPublications() {
+      const query = document.getElementById("pubSearch").value.toLowerCase().trim();
+      const active = document.querySelector(".filter-btn.active").dataset.filter;
+      document.querySelectorAll(".pub").forEach(item => {
+        const text = item.innerText.toLowerCase();
+        const year = item.dataset.year;
+        const category = item.dataset.category;
+        const matchesSearch = text.includes(query);
+        const matchesFilter = active === "all" || year === active || category.includes(active);
+        item.classList.toggle("hidden", !(matchesSearch && matchesFilter));
+      });
+    }
+
+    function init() {
+      renderHonors();
+      renderPublications();
+      renderExperiences();
+      renderReviewerJournals();
+      renderReviewCounts();
+      renderProjects();
+      renderConferences();
+      renderTraining();
+
+      document.getElementById("pubSearch").addEventListener("input", filterPublications);
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          filterPublications();
+        });
+      });
+    }
+
+    menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
+
+    themeToggle.addEventListener("click", () => {
+      const isDark = body.getAttribute("data-theme") === "dark";
+      body.setAttribute("data-theme", isDark ? "light" : "dark");
+      themeToggle.textContent = isDark ? "Theme" : "Light";
+    });
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = height > 0 ? (scrollTop / height) * 100 + "%" : "0%";
+      topBtn.style.display = scrollTop > 650 ? "block" : "none";
+    });
+
+    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    copyEmail.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("eagyemang@tulane.edu");
+        copyEmail.textContent = "Email copied";
+        setTimeout(() => copyEmail.textContent = "Copy Tulane email", 1800);
+      } catch (error) {
+        copyEmail.textContent = "Copy failed";
+        setTimeout(() => copyEmail.textContent = "Copy Tulane email", 1800);
+      }
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
+        }
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+    document.querySelectorAll("section[id]").forEach(section => observer.observe(section));
+
+    init();
+  </script>
+</body>
+</html>
