@@ -391,11 +391,11 @@
         <h2>Academic Projects and Submitted Research</h2>
         <div class="list-stack" id="projectList"></div>
         <h3>Selected Current Manuscripts</h3>
-        <details>
+        <details open>
           <summary>Publications currently under review</summary>
           <div class="list-stack" id="underReviewList"></div>
         </details>
-        <details>
+        <details open>
           <summary>PhD three-paper format manuscripts currently in progress</summary>
           <ol id="ongoingList"></ol>
         </details>
@@ -806,6 +806,32 @@
         "Assisted in the design, evaluation, and refinement of Version 1 of an AI-enhanced multi-model R Shiny application for Alzheimer's disease predictive analytics.",
         "Coordinated and mentored graduate students by guiding applied data science projects into structured, publication-ready manuscripts."
       ]
+    },
+    {
+      "title": "Data Analyst and Co-consultant",
+      "institution": "Governance for Inclusive Development (GovID) and Ministry of Finance, Tax Policy Unit. Workshop: Capacity Building in Tax Policy Analysis",
+      "date": "9 Jan. 2023 - 14 Jan. 2023",
+      "items": [
+        "Provided STATA statistical software training for GIZ and Ministry of Finance staff with Professor Alufaar Bokpin.",
+        "Analyzed various tax components in Ghana to estimate the equivalent tax gap using stochastic tax frontier models."
+      ]
+    },
+    {
+      "title": "Data Analyst and Co-supervisor",
+      "institution": "TV3 2020 Election Command Center",
+      "date": "2 Dec. 2022 - 8 Dec. 2022",
+      "items": [
+        "Analyzed real-time Ghana 2020 election data to project the winners and losers of the 2020 Presidential and Parliamentary elections."
+      ]
+    },
+    {
+      "title": "Invigilating Assistant",
+      "institution": "University of Ghana",
+      "date": "Aug. 2018 - Nov. 2021",
+      "items": [
+        "Assisted in maintaining law and order during the entire examination period.",
+        "Reported unusual incidents to the chief invigilator during invigilation."
+      ]
     }
   ],
   "reviewerJournals": [
@@ -1182,11 +1208,13 @@
 
     function renderExperiences() {
       const internshipStart = CV_DATA.experiences.findIndex(e => e.title === "Graduate Research Collaborator");
+      const consultationStart = CV_DATA.experiences.findIndex(e => e.title === "Data Analyst and Co-consultant");
 
       document.getElementById("experienceList").innerHTML = CV_DATA.experiences.map((e, i) => `
         ${i === 0 ? `<div class="subsection-heading">Research, Teaching, and Academic Appointments</div>` : ""}
         ${i === internshipStart ? `<div class="subsection-heading">Academic Internships</div>` : ""}
-        <details ${i < 2 ? "open" : ""}>
+        ${i === consultationStart ? `<div class="subsection-heading">Professional Consultation and Supervision</div>` : ""}
+        <details open>
           <summary>${escapeHtml(e.title)} | ${escapeHtml(e.institution)} | ${escapeHtml(e.date)}</summary>
           <ul>${e.items.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
         </details>
@@ -1273,6 +1301,8 @@
       renderProjects();
       renderConferences();
       renderTraining();
+
+      document.querySelectorAll("details").forEach(detail => { detail.open = true; });
 
       document.getElementById("pubSearch").addEventListener("input", filterPublications);
       document.querySelectorAll(".filter-btn").forEach(btn => {
