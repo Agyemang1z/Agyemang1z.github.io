@@ -262,6 +262,7 @@
         <a href="#service">Service</a>
         <a href="#projects">Projects</a>
         <a href="#presentations">Presentations</a>
+        <a href="#open-science">Open Science</a>
         <a href="#training">Training</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -310,6 +311,7 @@
     <div class="stat"><strong>15</strong><span>Selected peer-review journal roles included</span></div>
     <div class="stat"><strong>50+</strong><span>Scientific review records by journal included</span></div>
     <div class="stat"><strong>8</strong><span>Selected conferences and presentations included</span></div>
+    <div class="stat"><strong>13</strong><span>Reproducible code and open science outputs included</span></div>
   </div>
 
   <main>
@@ -406,6 +408,11 @@
         <div class="list-stack" id="conferenceList"></div>
       </section>
 
+      <section id="open-science">
+        <h2>Reproducible Codes and Open Science Outputs</h2>
+        <div class="list-stack" id="openScienceList"></div>
+      </section>
+
       <section id="training">
         <h2>Selected Training and Workshops</h2>
         <div class="list-stack" id="trainingList"></div>
@@ -432,6 +439,7 @@
           <li>15 selected academic journals listed for peer-review service.</li>
           <li>50+ journal-based scientific review records listed.</li>
           <li>8 selected conferences and professional presentations.</li>
+          <li>13 reproducible code and open science outputs.</li>
           <li>6 selected training and workshop records.</li>
         </ul>
       </div>
@@ -967,6 +975,10 @@
     ],
     [
       1,
+      "Discover Artificial Intelligence"
+    ],
+    [
+      1,
       "PLOS Global Public Health"
     ],
     [
@@ -1100,6 +1112,73 @@
       "Baseline Comparative Analysis and Review of Election Forensics: Application to Ghana's 2012 and 2020 Presidential Elections.",
       "7th School of Social Sciences International Conference, University of Ghana",
       ""
+    ]
+  ],
+  "openScience": [
+    [
+      "Heart Failure and Survival Manuscript",
+      "Reproducible Machine Learning Code for Heart Failure Research",
+      "https://github.com/Agyemang1z/Heart-Failure-Manuscript"
+    ],
+    [
+      "SMART-Pred R Shiny App Development Manuscript",
+      "AI-Enhanced Multi-Algorithm R Shiny Application for Predictive Modeling and Alzheimer's Disease",
+      "https://github.com/Agyemang1z/SMART-Pred-Shiny-Multi-Algorithm-R-Tool-for-Predictive-Modeling-Manuscript"
+    ],
+    [
+      "Mental Health using ML Manuscript",
+      "Machine Learning and Explainable AI for Predicting Workplace Mental Health Treatment",
+      "https://github.com/Agyemang1z/Mental-Health-Manuscript"
+    ],
+    [
+      "Hypertension General Social Survey 2022 Manuscript",
+      "Statistical and Machine Learning Analysis of Hypertension Predictors in U.S. Adults",
+      "https://github.com/Agyemang1z/Hypertension-GSS-2022-Manuscript"
+    ],
+    [
+      "Enhancing Credit Default Manuscript",
+      "Boruta Feature Selection, DBSCAN, and Resampling-Based Credit Default Prediction",
+      "https://github.com/Agyemang1z/Credit-Default-Manuscript"
+    ],
+    [
+      "Influenza A UTRGV Master's Thesis",
+      "Sequential Data Modeling Using Traditional, DWT-GPR Hybrid, and Deep Learning Architectures",
+      "https://github.com/Agyemang1z/Influenza-A-UTRGV"
+    ],
+    [
+      "Newcomb Benford and COVID-19 Data Analysis",
+      "R Code for Assessing Reliability and Inconsistencies in Continental COVID-19 Reporting",
+      "https://github.com/Agyemang1z/Benford-data"
+    ],
+    [
+      "STAT 6379 Stochastic Processes Final Project",
+      "Stochastic Analysis of Epidemic Dynamics Using the SIR Compartmental Model",
+      "https://github.com/Agyemang1z/STAT-6379-Final-Project"
+    ],
+    [
+      "Class Imbalance with Stroke Data",
+      "Reproducible Code for Assessing Class Imbalance Techniques in Health-Related Classification Problems",
+      "https://github.com/Agyemang1z/Stroke"
+    ],
+    [
+      "GPR and Wavelet Manuscript",
+      "Gaussian Process Regression (GPR) and Wavelet Power Spectrum Modeling of Influenza A H1N1",
+      "https://github.com/Agyemang1z/GPR-and-Wavelet-Manuscript"
+    ],
+    [
+      "Tinnitus Functional Index Reduction Manuscript",
+      "Supervised Machine Learning Code and Data for Modeling Tinnitus Functional Index Reduction",
+      "https://github.com/Agyemang1z/Tinnitus-Case-Study-1"
+    ],
+    [
+      "Road Traffic Accidents Manuscript",
+      "SARIMA and Facebook Prophet Forecasting of Road Traffic Accidents with Potential Changepoints",
+      "https://github.com/Agyemang1z/Road-Accidents"
+    ],
+    [
+      "Ghana Election Forensics Manuscript",
+      "R Code for Comparative Analysis of Ghana's 2012 and 2020 Presidential Elections",
+      "https://github.com/Agyemang1z/Election-Forensics"
     ]
   ],
   "training": [
@@ -1279,6 +1358,16 @@
       `).join("");
     }
 
+    function renderOpenScience() {
+      document.getElementById("openScienceList").innerHTML = CV_DATA.openScience.map((o, i) => `
+        <article class="record">
+          <span class="record-title">${i + 1}. ${escapeHtml(o[0])}</span>
+          <span class="record-meta">${escapeHtml(o[1])}</span>
+          ${externalLink(o[2], "Repository link")}
+        </article>
+      `).join("");
+    }
+
     function renderTraining() {
       document.getElementById("trainingList").innerHTML = CV_DATA.training.map((t, i) => `
         <article class="record">
@@ -1309,6 +1398,7 @@
       renderReviewCounts();
       renderProjects();
       renderConferences();
+      renderOpenScience();
       renderTraining();
 
       document.querySelectorAll("details").forEach(detail => { detail.open = true; });
